@@ -37,7 +37,7 @@
     "entrypoint.sh"
   ],
   "dependencies": {
-    "agenda": "^4.2.1",
+    "agenda": "^4.4.0",
     "body-parser": "^1.15.0",
     "commander": "^2.9.0",
     "express": "^4.0.0",
