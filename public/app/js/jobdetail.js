@@ -10,39 +10,10 @@ const jobDetail = Vue.component("job-detail", {
       return moment(date).format("DD-MM-YYYY HH:mm:ss");
     },
   },
-  template: `
-  <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <!-- Modal -->
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Job Data - {{job.job.name}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <div class="row my-3">
-          <div class="col">
-            <p><strong>Next run starts: </strong>{{ formatDate(job.job.nextRunAt) }}</p>
-            <p><strong>Last run started: </strong>{{ formatDate(job.job.lastRunAt) }}</p>
-          </div>
-        </div>
-        <p><strong>Metadata: </strong></p>
-        <prism-editor class="json-editor" :lineNumbers="true" :readonly="true" :code="job.job.data | formatJSON" language="json"></prism-editor>
-        <div v-if='job.failed' class="row mt-3">
-          <div class="col pt-3 bg-danger text-light">
-              <p><strong>Fail Count:</strong> {{job.job.failCount}}</p>
-              <p><strong>Failed At:</strong> {{formatDate(job.job.failedAt)}}</p>
-              <p><strong>Reason:</strong> {{job.job.failReason}}</p>
-          </div>
-        </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  `,
+  render: function () {with(this){return _c('div',{staticClass:"modal fade",attrs:{"id":"modalData","tabindex":"-1","role":"dialog","aria-labelledby":"exampleModalLabel","aria-hidden":"true"}},[_c('div',{staticClass:"modal-dialog job-detail-dialog",attrs:{"role":"document"}},[_c('div',{staticClass:"modal-content"},[_c('div',{staticClass:"modal-header"},[_c('h5',{staticClass:"modal-title",attrs:{"id":"exampleModalLabel"}},[_v("Job Data - "+_s(job.job.name))]),_m(0)]),_c('div',{staticClass:"modal-body"},[_c('div',{staticClass:"row my-3"},[_c('div',{staticClass:"col"},[_c('p',[_c('strong',[_v("Next run starts: ")]),_v(_s(formatDate(job.job.nextRunAt)))]),_c('p',[_c('strong',[_v("Last run started: ")]),_v(_s(formatDate(job.job.lastRunAt)))])])]),_m(1),_c('prism-editor',{staticClass:"json-editor",attrs:{"lineNumbers":true,"readonly":true,"code":_f("formatJSON")(job.job.data),"language":"json"}}),(job.failed)?_c('div',{staticClass:"row mt-3"},[_c('div',{staticClass:"col pt-3 bg-danger text-light"},[_c('p',[_c('strong',[_v("Fail Count:")]),_v(" "+_s(job.job.failCount))]),_c('p',[_c('strong',[_v("Failed At:")]),_v(" "+_s(formatDate(job.job.failedAt)))]),_c('p',[_c('strong',[_v("Reason:")]),_v(" "+_s(job.job.failReason))])])]):_e()],1),_m(2)])])])}},
+  staticRenderFns: [
+    function () {with(this){return _c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_v("×")])])}},
+    function () {with(this){return _c('p',[_c('strong',[_v("Metadata: ")])])}},
+    function () {with(this){return _c('div',{staticClass:"modal-footer"},[_c('button',{staticClass:"btn btn-secondary",attrs:{"type":"button","data-dismiss":"modal"}},[_v("Close")])])}},
+  ],
 });

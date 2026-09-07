@@ -1,8 +1,5 @@
 const popupmessage = Vue.component("popup-message", {
   props: ["job", "deletec", "requeuec", "createc"],
-  template: `
-   <div v-if="deletec" class="alert alert-success popupmessage">Job Deleted successfull</div>
-   <div v-else-if="requeuec" class="alert alert-success popupmessage">Job Requeue successfull</div>
-   <div v-else-if="createc" class="alert alert-success popupmessage">Job Created successfull</div>
-  `,
+  render: function () {with(this){return (deletec)?_c('div',{staticClass:"alert alert-success popupmessage"},[_v("Job Deleted successfull")]):(requeuec)?_c('div',{staticClass:"alert alert-success popupmessage"},[_v("Job Requeue successfull")]):(createc)?_c('div',{staticClass:"alert alert-success popupmessage"},[_v("Job Created successfull")]):_e()}},
+  staticRenderFns: [],
 });

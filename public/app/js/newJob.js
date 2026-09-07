@@ -44,46 +44,8 @@ const newJob = Vue.component("new-job", {
         .catch(console.log);
     },
   },
-  template: `
-  <div class="modal fade" id="modalNewJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <!-- Modal -->
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create Job</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="jobname">Job Name</label>
-                <input v-model="jobName"  type="text" class="form-control" id="jobname" aria-describedby="jobname">
-              </div>
-              <div class="form-group">
-                <label for="jobSchedule">Job Schedule</label>
-                <input v-model="jobSchedule" type="text" class="form-control" id="jobSchedule" aria-describedby="jobSchedule">
-                <small id="jobSchedule" class="form-text text-muted">Number/Every Unit i.e: "1 seconds" or "3 days" (check npmjs.com/human-interval)</small>
-              </div>
-              <div class="form-group">
-                <label for="jobRepeatEvery">Job Repeat Every</label>
-                <input v-model="jobRepeatEvery"  type="text" class="form-control" id="jobRepeatEvery" aria-describedby="jobRepeatEvery">
-                <small id="jobRepeatEvery" class="form-text text-muted">Number/Every Unit i.e: "1 month" or "3 hours"</small>
-              </div>
-              <div class="form-group">
-                <label for="jobData">Job Metadata</label>
-                <prism-editor class="json-editor" :lineNumbers="true" v-model="jobData" language="json"></prism-editor>
-                <small class="form-text text-muted">{{jobDataParseError}}</small>
-              </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-info" @click="create()">Create Job</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  `,
+  render: function () {with(this){return _c('div',{staticClass:"modal fade",attrs:{"id":"modalNewJob","tabindex":"-1","role":"dialog","aria-labelledby":"exampleModalLabel","aria-hidden":"true"}},[_c('div',{staticClass:"modal-dialog",attrs:{"role":"document"}},[_c('div',{staticClass:"modal-content"},[_m(0),_c('div',{staticClass:"modal-body"},[_c('form',[_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"jobname"}},[_v("Job Name")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(jobName),expression:"jobName"}],staticClass:"form-control",attrs:{"type":"text","id":"jobname","aria-describedby":"jobname"},domProps:{"value":(jobName)},on:{"input":function($event){if($event.target.composing)return;jobName=$event.target.value}}})]),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"jobSchedule"}},[_v("Job Schedule")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(jobSchedule),expression:"jobSchedule"}],staticClass:"form-control",attrs:{"type":"text","id":"jobSchedule","aria-describedby":"jobSchedule"},domProps:{"value":(jobSchedule)},on:{"input":function($event){if($event.target.composing)return;jobSchedule=$event.target.value}}}),_c('small',{staticClass:"form-text text-muted",attrs:{"id":"jobSchedule"}},[_v("Number/Every Unit i.e: \"1 seconds\" or \"3 days\" (check npmjs.com/human-interval)")])]),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"jobRepeatEvery"}},[_v("Job Repeat Every")]),_c('input',{directives:[{name:"model",rawName:"v-model",value:(jobRepeatEvery),expression:"jobRepeatEvery"}],staticClass:"form-control",attrs:{"type":"text","id":"jobRepeatEvery","aria-describedby":"jobRepeatEvery"},domProps:{"value":(jobRepeatEvery)},on:{"input":function($event){if($event.target.composing)return;jobRepeatEvery=$event.target.value}}}),_c('small',{staticClass:"form-text text-muted",attrs:{"id":"jobRepeatEvery"}},[_v("Number/Every Unit i.e: \"1 month\" or \"3 hours\"")])]),_c('div',{staticClass:"form-group"},[_c('label',{attrs:{"for":"jobData"}},[_v("Job Metadata")]),_c('prism-editor',{staticClass:"json-editor",attrs:{"lineNumbers":true,"language":"json"},model:{value:(jobData),callback:function ($v) {jobData=$v},expression:"jobData"}}),_c('small',{staticClass:"form-text text-muted"},[_v(_s(jobDataParseError))])],1)])]),_c('div',{staticClass:"modal-footer"},[_c('button',{staticClass:"btn btn-info",attrs:{"type":"button"},on:{"click":function($event){return create()}}},[_v("Create Job")]),_c('button',{staticClass:"btn btn-secondary",attrs:{"type":"button","data-dismiss":"modal"}},[_v("Cancel")])])])])])}},
+  staticRenderFns: [
+    function () {with(this){return _c('div',{staticClass:"modal-header"},[_c('h5',{staticClass:"modal-title",attrs:{"id":"exampleModalLabel"}},[_v("Create Job")]),_c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_v("×")])])])}},
+  ],
 });
