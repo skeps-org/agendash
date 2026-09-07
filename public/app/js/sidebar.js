@@ -62,60 +62,8 @@ const sidebar = Vue.component("sidebar", {
       }
     },
   },
-  template: `
-    <div class="col sidebar">
-      <div class="row">
-        <div class="col ">
-           <button data-toggle="modal" data-target="#modalNewJob" @click="$emit('new-job')" data-placement="top" title="Add a new job" class="btn btn-block btn-outline-success"><i class="oi oi-plus IcoInButton"></i> New Job</button>
-        </div>
-      </div> <!-- row -->
-      <div  class="row p-0">
-        <div  v-if="loading" class="col-12 my-5 ml-auto text-center">
-            <div class="text-center my-5 py-5">
-              <div class="spinner-border" role="status">
-                            </div>
-                            <div>
-                              <span class="">Loading Jobs...</span>
-                            </div>
-              </div>
-        </div>
-        <div v-else class="col">
-          <div class="row rows-ow" v-for="type in sortedArray">
-            <div class="col-12 d-flex mt-4 mybtn" @click="searchSpecificJob(type.displayName,'')">
-              <div class="mr-auto">{{type.displayName}}</div><div class="text-rigth pill-big-own bg-secondary right">{{type.total}}</div>
-            </div>
-            <div class="col-12 p-1">
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-info bg-info" role="progressbar" :style="{'flex-grow': flexgrow(type.scheduled)}"></div>
-                <div class="progress-bar progress-bar-striped progress-bar-primary bg-primary" role="progressbar" :style="{'flex-grow': flexgrow(type.queued)}"></div>
-                <div class="progress-bar progress-bar-striped progress-bar-warning bg-warning" role="progressbar" :style="{'flex-grow': flexgrow(type.running)}"></div>
-                <div class="progress-bar progress-bar-striped progress-bar-success bg-success" role="progressbar"  :style="{'flex-grow': flexgrow(type.completed)}"></div>
-                <div class="progress-bar progress-bar-striped progress-bar-danger bg-danger" role="progressbar" :style="{'flex-grow': flexgrow(type.failed)}"></div>
-              </div>
-            </div>
-             <!-- internal list of states  -->
-            <div class="col-12 d-flex px-3 mb-2 mybtn" @click="searchSpecificJob(type.displayName,'scheduled')">
-              <div class="mr-auto">Scheduled: </div><div class="text-rigth">{{type.scheduled}}</div>
-            </div>
-            <div class="col-12 d-flex px-3 mb-2 text-primary mybtn" @click="searchSpecificJob(type.displayName,'queued')">
-              <div class="mr-auto">Queued: </div><div class="text-rigth">{{type.queued}}</div>
-            </div>
-            <div class="col-12 d-flex px-3 mb-2 text-warning mybtn"  @click="searchSpecificJob(type.displayName,'running')">
-              <div class="mr-auto">Running: </div><div class="text-rigth">{{type.running}}</div>
-            </div>
-            <div class="col-12 d-flex px-3 mb-2 text-success mybtn"  @click="searchSpecificJob(type.displayName,'completed')">
-              <div class="mr-auto">Completed: </div><div class="text-rigth">{{type.completed}}</div>
-            </div>
-            <div class="col-12 d-flex px-3 mb-2 text-danger mybtn"  @click="searchSpecificJob(type.displayName,'failed')">
-              <div class="mr-auto">Failed: </div><div class="text-rigth">{{type.failed}}</div>
-            </div>
-            <div class="col-12 d-flex px-3 mb-2 text-info mybtn"  @click="searchSpecificJob(type.displayName,'repeating')">
-              <div class="mr-auto">Repeating: </div><div class="text-rigth">{{type.repeating}}</div>
-            </div>
-
-          </div>
-        </div>
-      </div> <!-- row -->
-    </div> <!-- div -->
-  `,
+  render: function () {with(this){return _c('div',{staticClass:"col sidebar"},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col"},[_c('button',{staticClass:"btn btn-block btn-outline-success",attrs:{"data-toggle":"modal","data-target":"#modalNewJob","data-placement":"top","title":"Add a new job"},on:{"click":function($event){return $emit('new-job')}}},[_c('i',{staticClass:"oi oi-plus IcoInButton"}),_v(" New Job")])])]),_c('div',{staticClass:"row p-0"},[(loading)?_c('div',{staticClass:"col-12 my-5 ml-auto text-center"},[_m(0)]):_c('div',{staticClass:"col"},_l((sortedArray),function(type){return _c('div',{staticClass:"row rows-ow"},[_c('div',{staticClass:"col-12 d-flex mt-4 mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'')}}},[_c('div',{staticClass:"mr-auto"},[_v(_s(type.displayName))]),_c('div',{staticClass:"text-rigth pill-big-own bg-secondary right"},[_v(_s(type.total))])]),_c('div',{staticClass:"col-12 p-1"},[_c('div',{staticClass:"progress"},[_c('div',{staticClass:"progress-bar progress-bar-striped progress-bar-info bg-info",style:({'flex-grow': flexgrow(type.scheduled)}),attrs:{"role":"progressbar"}}),_c('div',{staticClass:"progress-bar progress-bar-striped progress-bar-primary bg-primary",style:({'flex-grow': flexgrow(type.queued)}),attrs:{"role":"progressbar"}}),_c('div',{staticClass:"progress-bar progress-bar-striped progress-bar-warning bg-warning",style:({'flex-grow': flexgrow(type.running)}),attrs:{"role":"progressbar"}}),_c('div',{staticClass:"progress-bar progress-bar-striped progress-bar-success bg-success",style:({'flex-grow': flexgrow(type.completed)}),attrs:{"role":"progressbar"}}),_c('div',{staticClass:"progress-bar progress-bar-striped progress-bar-danger bg-danger",style:({'flex-grow': flexgrow(type.failed)}),attrs:{"role":"progressbar"}})])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'scheduled')}}},[_c('div',{staticClass:"mr-auto"},[_v("Scheduled: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.scheduled))])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 text-primary mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'queued')}}},[_c('div',{staticClass:"mr-auto"},[_v("Queued: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.queued))])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 text-warning mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'running')}}},[_c('div',{staticClass:"mr-auto"},[_v("Running: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.running))])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 text-success mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'completed')}}},[_c('div',{staticClass:"mr-auto"},[_v("Completed: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.completed))])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 text-danger mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'failed')}}},[_c('div',{staticClass:"mr-auto"},[_v("Failed: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.failed))])]),_c('div',{staticClass:"col-12 d-flex px-3 mb-2 text-info mybtn",on:{"click":function($event){return searchSpecificJob(type.displayName,'repeating')}}},[_c('div',{staticClass:"mr-auto"},[_v("Repeating: ")]),_c('div',{staticClass:"text-rigth"},[_v(_s(type.repeating))])])])}),0)])])}},
+  staticRenderFns: [
+    function () {with(this){return _c('div',{staticClass:"text-center my-5 py-5"},[_c('div',{staticClass:"spinner-border",attrs:{"role":"status"}}),_c('div',[_c('span',{},[_v("Loading Jobs...")])])])}},
+  ],
 });

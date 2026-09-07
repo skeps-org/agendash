@@ -34,62 +34,13 @@ const topbar = Vue.component("topbar", {
       );
     },
   },
-  template: `
-  <form @submit.prevent="submit">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-          <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> Name </span>
-            </div>
-            <input type="text" class="form-control" placeholder="job name" v-model='name'/>
-          </div>
-          <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> Property </span>
-            </div>
-            <input type="text" class="form-control" placeholder="data.color" v-model="property" />
-          </div>
-          <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> Value </span>
-            </div>
-            <input class="form-control" v-model="search" placeholder="green"/>
-            <div class="form-check mx-2 pt-2">
-                <input type="checkbox" v-model="object" class="form-check-input" id="isObjectId">
-                <label class="form-check-label" for="isObjectId"> Is ObjectId?</label>
-            </div>
-          </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="input-group mt-2 mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> Refresh Interval </span>
-              </div>
-              <input type="text" class="form-control" v-model="refresh" />
-            </div>
-            <div class="input-group mt-2 mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> Page Size </span>
-              </div>
-              <input type="number" class="form-control" v-model="limit" />
-            </div>
-            <div class="input-group mt-2 mb-2">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> State </span>
-              </div>
-                <select v-model="state" class="form-control" id="selectStateInput">
-                  <option v-bind:class="option.class" v-for="option in stateobject" v-bind:value="option.value">{{option.text}}</option>
-                </select>
-          </div>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-xs-12 col-md-3 ml-auto text-right">
-        <button type=submit @click="$emit('search-form', name, search, property, limit, skip, refresh, state, object)" class="d-none d-md-inline-block btn btn-success"> Apply </button>
-        <button type=submit @click="$emit('search-form', name, search, property, limit, skip, refresh, state, object)" class="d-none d-inline-block d-md-none btn btn-block btn-success"> Apply </button>
-      </div>
-    </div>
-  </form>
-  `,
+  render: function () {with(this){return _c('form',{on:{"submit":function($event){$event.preventDefault();return submit.apply(null, arguments)}}},[_c('div',{staticClass:"row"},[_c('div',{staticClass:"col-xs-12 col-md-6"},[_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(0),_c('input',{directives:[{name:"model",rawName:"v-model",value:(name),expression:"name"}],staticClass:"form-control",attrs:{"type":"text","placeholder":"job name"},domProps:{"value":(name)},on:{"input":function($event){if($event.target.composing)return;name=$event.target.value}}})]),_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(1),_c('input',{directives:[{name:"model",rawName:"v-model",value:(property),expression:"property"}],staticClass:"form-control",attrs:{"type":"text","placeholder":"data.color"},domProps:{"value":(property)},on:{"input":function($event){if($event.target.composing)return;property=$event.target.value}}})]),_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(2),_c('input',{directives:[{name:"model",rawName:"v-model",value:(search),expression:"search"}],staticClass:"form-control",attrs:{"placeholder":"green"},domProps:{"value":(search)},on:{"input":function($event){if($event.target.composing)return;search=$event.target.value}}}),_c('div',{staticClass:"form-check mx-2 pt-2"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(object),expression:"object"}],staticClass:"form-check-input",attrs:{"type":"checkbox","id":"isObjectId"},domProps:{"checked":Array.isArray(object)?_i(object,null)>-1:(object)},on:{"change":function($event){var $a=object,$el=$event.target,$c=$el.checked?(true):(false);if(Array.isArray($a)){var $v=null,$i=_i($a,$v);if($el.checked){$i<0&&(object=$a.concat([$v]))}else{$i>-1&&(object=$a.slice(0,$i).concat($a.slice($i+1)))}}else{object=$c}}}}),_c('label',{staticClass:"form-check-label",attrs:{"for":"isObjectId"}},[_v(" Is ObjectId?")])])])]),_c('div',{staticClass:"col-xs-12 col-md-6"},[_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(3),_c('input',{directives:[{name:"model",rawName:"v-model",value:(refresh),expression:"refresh"}],staticClass:"form-control",attrs:{"type":"text"},domProps:{"value":(refresh)},on:{"input":function($event){if($event.target.composing)return;refresh=$event.target.value}}})]),_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(4),_c('input',{directives:[{name:"model",rawName:"v-model",value:(limit),expression:"limit"}],staticClass:"form-control",attrs:{"type":"number"},domProps:{"value":(limit)},on:{"input":function($event){if($event.target.composing)return;limit=$event.target.value}}})]),_c('div',{staticClass:"input-group mt-2 mb-2"},[_m(5),_c('select',{directives:[{name:"model",rawName:"v-model",value:(state),expression:"state"}],staticClass:"form-control",attrs:{"id":"selectStateInput"},on:{"change":function($event){var $selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); state=$event.target.multiple ? $selectedVal : $selectedVal[0]}}},_l((stateobject),function(option){return _c('option',{class:option.class,domProps:{"value":option.value}},[_v(_s(option.text))])}),0)])])]),_c('div',{staticClass:"row mb-3"},[_c('div',{staticClass:"col-xs-12 col-md-3 ml-auto text-right"},[_c('button',{staticClass:"d-none d-md-inline-block btn btn-success",attrs:{"type":"submit"},on:{"click":function($event){return $emit('search-form', name, search, property, limit, skip, refresh, state, object)}}},[_v(" Apply ")]),_c('button',{staticClass:"d-none d-inline-block d-md-none btn btn-block btn-success",attrs:{"type":"submit"},on:{"click":function($event){return $emit('search-form', name, search, property, limit, skip, refresh, state, object)}}},[_v(" Apply ")])])])])}},
+  staticRenderFns: [
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" Name ")])])}},
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" Property ")])])}},
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" Value ")])])}},
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" Refresh Interval ")])])}},
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" Page Size ")])])}},
+    function () {with(this){return _c('div',{staticClass:"input-group-prepend"},[_c('span',{staticClass:"input-group-text"},[_v(" State ")])])}},
+  ],
 });
