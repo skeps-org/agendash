@@ -195,89 +195,9 @@ const app = Vue.component("app", {
   created() {
     return this.fetchData();
   },
-  template: `
-
-    <div class="container-fluid">
-      <div class="">
-        <div class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <div class="d-flex">
-            <div>
-              <a class="navbar-brand col-sm-10 col-md-10 mr-0 tittle"> Agendash</a>
-            </div>
-            <div class='d-md-none w-50'>
-              <div id="mySidebar" class="sidebar-collapse" @click="closeNav()">
-                <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
-                <div v-if="hideSlide === false" class="bg-light overflow-auto">
-                  <sidebar
-                    v-on:search-sidebar="searchForm"
-                    v-on:new-job="newJob"
-                    :overview="overview"
-                    :pagesize="pagesize"
-                    :loading="loading"
-                    >
-                  </sidebar>
-                </div>
-              </div>
-              <div class="slidebar-container-button" id="main">
-                <button class="openbtn" @click="openNav()">&#9776;</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-5">
-          <div v-if="hideSlide === true" class="col-md-2 d-none d-md-block bg-light overflow-auto">
-            <sidebar
-              v-on:search-sidebar="searchForm"
-              v-on:new-job="newJob"
-              :overview="overview"
-              :pagesize="pagesize"
-              :loading="loading"
-              >
-            </sidebar>
-          </div>
-          <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 pt-3 pb-5">
-            <div class="col-12">
-              <topbar v-on:search-form="searchForm"
-              :name='name'
-              :state='state'
-              :search='search'
-              :property='property'
-              >
-              </topbar>
-            </div>
-            <div class="col-12 ">
-              <job-list
-                  v-on:confirm-delete="confirmDelete"
-                  v-on:confirm-multi-delete="confirmDeleteMulti"
-                  v-on:confirm-requeue="confirmRequeue"
-                  v-on:confirm-multi-requeue="confirmRequeueMulti"
-                  v-on:show-job-detail="showJobDetail"
-                  v-on:pagechange="pagechange"
-                  :pagesize="pagesize"
-                  :pagenumber='pagenumber'
-                  :totalPages='totalPages'
-                  :skip="skip"
-                  :jobs="jobs"
-                  :sendClean='sendClean'
-                  :loading='loading'
-                  >
-              </job-list>
-            </div>
-          </main>
-      </div>
-      <div class="row bg-dark py-3">
-        <div class="col-6 m-auto text-light text-center">
-          <small>UI written by <a class="text-light" href="https://www.softwareontheroad.com/about" target="_BLANK">Sam Quinn</a>. Backend by Agenda team.</small>
-        </div>
-      </div>
-      <job-detail v-if="showDetail" v-bind:job="jobData"></job-detail>
-      <confirm-delete v-if="showConfirm" v-on:popup-message="popupmessage('delete')" v-on:refresh-data="refreshData" v-bind:job="jobData"></confirm-delete>
-      <confirm-multi-delete v-if="showConfirmMulti" v-on:ready-clean="readyClean" v-on:popup-message="popupmessage('multidelete')" v-on:refresh-data="refreshData" v-bind:jobs="jobData"></confirm-multi-delete>
-      <confirm-requeue v-if="showConfirmRequeue"  v-on:popup-message="popupmessage('requeue')" v-on:refresh-data="refreshData" v-bind:job="jobData"></confirm-requeue>
-      <confirm-multi-requeue v-if="showConfirmRequeueMulti" v-on:ready-clean="readyClean" v-on:popup-message="popupmessage('multirequeue')" v-on:refresh-data="refreshData" v-bind:jobs="jobData"></confirm-multi-requeue>
-      <popup-message :deletec="deletec" :requeuec="requeuec" :createc="createc"></popup-message>
-      <new-job v-if="showNewJob" v-on:popup-message="popupmessage('create')" v-on:refresh-data="fetchData"></new-job>
-  </div>
-  `,
+  render: function () {with(this){return _c('div',{staticClass:"container-fluid"},[_c('div',{},[_c('div',{staticClass:"navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"},[_c('div',{staticClass:"d-flex"},[_m(0),_c('div',{staticClass:"d-md-none w-50"},[_c('div',{staticClass:"sidebar-collapse",attrs:{"id":"mySidebar"},on:{"click":function($event){return closeNav()}}},[_c('a',{staticClass:"closebtn",attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return closeNav()}}},[_v("×")]),(hideSlide === false)?_c('div',{staticClass:"bg-light overflow-auto"},[_c('sidebar',{attrs:{"overview":overview,"pagesize":pagesize,"loading":loading},on:{"search-sidebar":searchForm,"new-job":newJob}})],1):_e()]),_c('div',{staticClass:"slidebar-container-button",attrs:{"id":"main"}},[_c('button',{staticClass:"openbtn",on:{"click":function($event){return openNav()}}},[_v("☰")])])])])])]),_c('div',{staticClass:"row pt-5"},[(hideSlide === true)?_c('div',{staticClass:"col-md-2 d-none d-md-block bg-light overflow-auto"},[_c('sidebar',{attrs:{"overview":overview,"pagesize":pagesize,"loading":loading},on:{"search-sidebar":searchForm,"new-job":newJob}})],1):_e(),_c('main',{staticClass:"col-md-10 ml-sm-auto col-lg-10 px-4 pt-3 pb-5",attrs:{"role":"main"}},[_c('div',{staticClass:"col-12"},[_c('topbar',{attrs:{"name":name,"state":state,"search":search,"property":property},on:{"search-form":searchForm}})],1),_c('div',{staticClass:"col-12"},[_c('job-list',{attrs:{"pagesize":pagesize,"pagenumber":pagenumber,"totalPages":totalPages,"skip":skip,"jobs":jobs,"sendClean":sendClean,"loading":loading},on:{"confirm-delete":confirmDelete,"confirm-multi-delete":confirmDeleteMulti,"confirm-requeue":confirmRequeue,"confirm-multi-requeue":confirmRequeueMulti,"show-job-detail":showJobDetail,"pagechange":pagechange}})],1)])]),_m(1),(showDetail)?_c('job-detail',{attrs:{"job":jobData}}):_e(),(showConfirm)?_c('confirm-delete',{attrs:{"job":jobData},on:{"popup-message":function($event){return popupmessage('delete')},"refresh-data":refreshData}}):_e(),(showConfirmMulti)?_c('confirm-multi-delete',{attrs:{"jobs":jobData},on:{"ready-clean":readyClean,"popup-message":function($event){return popupmessage('multidelete')},"refresh-data":refreshData}}):_e(),(showConfirmRequeue)?_c('confirm-requeue',{attrs:{"job":jobData},on:{"popup-message":function($event){return popupmessage('requeue')},"refresh-data":refreshData}}):_e(),(showConfirmRequeueMulti)?_c('confirm-multi-requeue',{attrs:{"jobs":jobData},on:{"ready-clean":readyClean,"popup-message":function($event){return popupmessage('multirequeue')},"refresh-data":refreshData}}):_e(),_c('popup-message',{attrs:{"deletec":deletec,"requeuec":requeuec,"createc":createc}}),(showNewJob)?_c('new-job',{on:{"popup-message":function($event){return popupmessage('create')},"refresh-data":fetchData}}):_e()],1)}},
+  staticRenderFns: [
+    function () {with(this){return _c('div',[_c('a',{staticClass:"navbar-brand col-sm-10 col-md-10 mr-0 tittle"},[_v(" Agendash")])])}},
+    function () {with(this){return _c('div',{staticClass:"row bg-dark py-3"},[_c('div',{staticClass:"col-6 m-auto text-light text-center"},[_c('small',[_v("UI written by "),_c('a',{staticClass:"text-light",attrs:{"href":"https://www.softwareontheroad.com/about","target":"_BLANK"}},[_v("Sam Quinn")]),_v(". Backend by Agenda team.")])])])}},
+  ],
 });

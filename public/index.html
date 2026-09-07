@@ -24,11 +24,9 @@
     <link href="app/css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <div id="agendash-root">
-      <app></app>
-    </div>
+    <div id="agendash-root"></div>
     <script src="app/js/external/prism-autoloader.min.js"></script>
-    <script src="app/js/external/vue.js"></script>
+    <script src="app/js/external/vue.runtime.min.js"></script>
     <script src="app/js/external/axios.min.js"></script>
     <script src="app/js/external/moment.min.js"></script>
     <script src="app/js/confirms.js"></script>
@@ -42,9 +40,6 @@
     <script src="app/js/sidebar.js"></script>
     <script src="app/js/topbar.js"></script>
     <script src="app/js/main.js"></script>
-    <script>
-      Vue.component('prism-editor', VuePrismEditor)
-      new Vue({ el: '#agendash-root' })
-    </script>
+    <script src="app/js/init.js"></script>
   </body>
 </html>

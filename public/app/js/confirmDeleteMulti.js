@@ -14,32 +14,8 @@ const confirmDeleteMulti = Vue.component("confirm-multi-delete", {
         .catch(console.log);
     },
   },
-  template: `
-  <div class="modal fade" id="modalDeleteSureMulti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <!-- Modal -->
-      <h1>MULTI</h1>
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm Delete Permanently</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row px-3" v-for="job in jobs">
-            <div class="col">
-              <p>Job Id: {{job}}</p>
-            </div>
-
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteMulti(jobs)">Delete</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  `,
+  render: function () {with(this){return _c('div',{staticClass:"modal fade",attrs:{"id":"modalDeleteSureMulti","tabindex":"-1","role":"dialog","aria-labelledby":"exampleModalLabel","aria-hidden":"true"}},[_c('h1',[_v("MULTI")]),_c('div',{staticClass:"modal-dialog",attrs:{"role":"document"}},[_c('div',{staticClass:"modal-content"},[_m(0),_c('div',{staticClass:"modal-body"},_l((jobs),function(job){return _c('div',{staticClass:"row px-3"},[_c('div',{staticClass:"col"},[_c('p',[_v("Job Id: "+_s(job))])])])}),0),_c('div',{staticClass:"modal-footer"},[_c('button',{staticClass:"btn btn-danger",attrs:{"type":"button","data-dismiss":"modal"},on:{"click":function($event){return deleteMulti(jobs)}}},[_v("Delete")]),_c('button',{staticClass:"btn btn-secondary",attrs:{"type":"button","data-dismiss":"modal"}},[_v("Cancel")])])])])])}},
+  staticRenderFns: [
+    function () {with(this){return _c('div',{staticClass:"modal-header"},[_c('h5',{staticClass:"modal-title",attrs:{"id":"exampleModalLabel"}},[_v("Confirm Delete Permanently")]),_c('button',{staticClass:"close",attrs:{"type":"button","data-dismiss":"modal","aria-label":"Close"}},[_c('span',{attrs:{"aria-hidden":"true"}},[_v("×")])])])}},
+  ],
 });
