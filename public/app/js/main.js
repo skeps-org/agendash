@@ -26,6 +26,8 @@ const app = Vue.component("app", {
     property3: "",
     search3: "",
     object3: "",
+    autoRefresh: false,
+    autoRefreshTimer: null,
     newLimit: null,
     skip: 0,
     name: "",
@@ -72,7 +74,7 @@ const app = Vue.component("app", {
       this.jobData = data;
       this.showNewJob = true;
     },
-    searchForm(name, search, property, limit, skip, refresh, state, object, search2, property2, object2, search3, property3, object3) {
+    searchForm(name, search, property, limit, skip, refresh, state, object, search2, property2, object2, search3, property3, object3, autoRefresh) {
       this.pagesize = limit ? limit : this.pagesize
         this.name = name
         this.search = search
@@ -87,6 +89,7 @@ const app = Vue.component("app", {
         this.search3 = search3
         this.property3 = property3
         this.object3 = object3 ? object3 : this.object3
+        this.autoRefresh = !!autoRefresh
 
         // Form changed, reset the pagination state
         this.pagenumber = 1
@@ -108,6 +111,22 @@ const app = Vue.component("app", {
           this.property3,
           this.object3
         );
+
+        this.scheduleAutoRefresh();
+    },
+    scheduleAutoRefresh() {
+      if (this.autoRefreshTimer) {
+        clearTimeout(this.autoRefreshTimer);
+        this.autoRefreshTimer = null;
+      }
+      if (!this.autoRefresh) {
+        return;
+      }
+      const intervalMs = (parseFloat(this.refresh) || 60) * 1000;
+      this.autoRefreshTimer = setTimeout(() => {
+        this.refreshData();
+        this.scheduleAutoRefresh();
+      }, intervalMs);
     },
     refreshData() {
       this.fetchData(
@@ -240,6 +259,12 @@ const app = Vue.component("app", {
   },
   created() {
     return this.fetchData();
+  },
+  beforeDestroy() {
+    if (this.autoRefreshTimer) {
+      clearTimeout(this.autoRefreshTimer);
+      this.autoRefreshTimer = null;
+    }
   },
   render: function () {with(this){return _c('div',{staticClass:"container-fluid"},[_c('div',{},[_c('div',{staticClass:"navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"},[_c('div',{staticClass:"d-flex"},[_m(0),_c('div',{staticClass:"d-md-none w-50"},[_c('div',{staticClass:"sidebar-collapse",attrs:{"id":"mySidebar"},on:{"click":function($event){return closeNav()}}},[_c('a',{staticClass:"closebtn",attrs:{"href":"javascript:void(0)"},on:{"click":function($event){return closeNav()}}},[_v("×")]),(hideSlide === false)?_c('div',{staticClass:"bg-light overflow-auto"},[_c('sidebar',{attrs:{"overview":overview,"pagesize":pagesize,"loading":loading},on:{"search-sidebar":searchForm,"new-job":newJob}})],1):_e()]),_c('div',{staticClass:"slidebar-container-button",attrs:{"id":"main"}},[_c('button',{staticClass:"openbtn",on:{"click":function($event){return openNav()}}},[_v("☰")])])])])])]),_c('div',{staticClass:"row pt-5"},[(hideSlide === true)?_c('div',{staticClass:"col-md-2 d-none d-md-block bg-light overflow-auto"},[_c('sidebar',{attrs:{"overview":overview,"pagesize":pagesize,"loading":loading},on:{"search-sidebar":searchForm,"new-job":newJob}})],1):_e(),_c('main',{staticClass:"col-md-10 ml-sm-auto col-lg-10 px-4 pt-3 pb-5",attrs:{"role":"main"}},[_c('div',{staticClass:"col-12"},[_c('topbar',{attrs:{"name":name,"state":state,"search":search,"property":property,"search2":search2,"property2":property2,"search3":search3,"property3":property3},on:{"search-form":searchForm}})],1),_c('div',{staticClass:"col-12"},[_c('job-list',{attrs:{"pagesize":pagesize,"pagenumber":pagenumber,"totalPages":totalPages,"skip":skip,"jobs":jobs,"sendClean":sendClean,"loading":loading},on:{"confirm-delete":confirmDelete,"confirm-multi-delete":confirmDeleteMulti,"confirm-requeue":confirmRequeue,"confirm-multi-requeue":confirmRequeueMulti,"show-job-detail":showJobDetail,"pagechange":pagechange}})],1)])]),_m(1),(showDetail)?_c('job-detail',{attrs:{"job":jobData}}):_e(),(showConfirm)?_c('confirm-delete',{attrs:{"job":jobData},on:{"popup-message":function($event){return popupmessage('delete')},"refresh-data":refreshData}}):_e(),(showConfirmMulti)?_c('confirm-multi-delete',{attrs:{"jobs":jobData},on:{"ready-clean":readyClean,"popup-message":function($event){return popupmessage('multidelete')},"refresh-data":refreshData}}):_e(),(showConfirmRequeue)?_c('confirm-requeue',{attrs:{"job":jobData},on:{"popup-message":function($event){return popupmessage('requeue')},"refresh-data":refreshData}}):_e(),(showConfirmRequeueMulti)?_c('confirm-multi-requeue',{attrs:{"jobs":jobData},on:{"ready-clean":readyClean,"popup-message":function($event){return popupmessage('multirequeue')},"refresh-data":refreshData}}):_e(),_c('popup-message',{attrs:{"deletec":deletec,"requeuec":requeuec,"createc":createc}}),(showNewJob)?_c('new-job',{on:{"popup-message":function($event){return popupmessage('create')},"refresh-data":fetchData}}):_e()],1)}},
   staticRenderFns: [
